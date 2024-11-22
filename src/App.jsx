@@ -3,7 +3,7 @@ import React from 'react'
 const App = () => {
   return (
     <main>
-      <h1 className='text-5xl text-red-900 font-bold'>
+      <h1 className='text-5xl text-violet-300 font-bold'>
         Welcome to Redefinig Gaming
       </h1>
     </main>
