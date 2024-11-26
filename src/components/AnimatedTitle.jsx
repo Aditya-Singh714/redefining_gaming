@@ -1,5 +1,9 @@
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import clsx from "clsx";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedTitle = ({ title, containerClass }) => {
   const containerRef = useRef(null);
@@ -30,9 +34,8 @@ const AnimatedTitle = ({ title, containerClass }) => {
     return () => ctx.revert(); // Clean up on unmount
   }, []);
 
-
   return (
-    <div ref={containerRef} className={`animated-title ${containerClass}`}>
+    <div ref={containerRef} className={clsx("animated-title", containerClass)}>
       {title.split("<br />").map((line, index) => (
         <div
           key={index}

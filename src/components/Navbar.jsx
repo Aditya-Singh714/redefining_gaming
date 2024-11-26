@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import { useWindowScroll } from "react-use";
-import Button from "./Button";
-import { TiLocationArrow } from "react-icons/ti";
+import clsx from "clsx";
 import gsap from "gsap";
+import { useWindowScroll } from "react-use";
+import { useEffect, useRef, useState } from "react";
+import { TiLocationArrow } from "react-icons/ti";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"]; 
+import Button from "./Button";
 
-const Navbar = () => {
+const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+
+const NavBar = () => {
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
@@ -66,7 +68,7 @@ const Navbar = () => {
       className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
-      <nav className="flex size-full items-center justify-between p-4">
+        <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
             <img src="/img/logo.png" alt="logo" className="w-10" />
@@ -106,9 +108,11 @@ const Navbar = () => {
               {[1, 2, 3, 4].map((bar) => (
                 <div
                   key={bar}
-                  className={`indicator-line ${isIndicatorActive ? 'active' : ''}`}
+                  className={clsx("indicator-line", {
+                    active: isIndicatorActive,
+                  })}
                   style={{
-                    animationDelay: `${bar *0.1}s`
+                    animationDelay: `${bar * 0.1}s`,
                   }}
                 />
               ))}
@@ -120,4 +124,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
